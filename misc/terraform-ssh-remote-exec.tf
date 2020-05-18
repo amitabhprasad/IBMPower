@@ -16,10 +16,7 @@ variable "host_ip"{
 
 resource "null_resource" "delay" {
 
- 
  provisioner "remote-exec" {
-    inline = [
-    ]
 
     connection {
       user          = "${var.ssh_user}"
@@ -29,7 +26,4 @@ resource "null_resource" "delay" {
     script = "scripts/wait_for_instance.sh"
   }
 
- provisioner "local-exec" {
- 
-  }
 }
