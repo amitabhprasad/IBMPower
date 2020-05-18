@@ -1,0 +1,47 @@
+{
+    "input_datatypes": [],
+    "output_datatype": "content_template_output",
+    "input_groups": [
+      {
+        "name": "virtualmachine",
+        "label": "Virtual Machine Input Variables"
+      }
+    ],
+    "template_input_params": [
+      {
+        "name":  "private_ssh_key",
+        "type": "string",
+        "description": "Private SSH Key",
+        "hidden": false,
+        "label": "Private SSH Key",
+        "secured": false,
+        "required": true,
+        "immutable": false,
+        "group_name": "virtualmachine"
+      },
+      {
+        "name":  "ssh_user",
+        "type": "string",
+        "description": "ssh_user",
+        "hidden": false,
+        "label": "ssh_user",
+        "secured": false,
+        "required": true,
+        "immutable": false,
+        "group_name": "virtualmachine"
+      },
+      {
+        "name":  "host_ip",
+        "type": "string",
+        "description": "Fixed IP of the host",
+        "hidden": false,
+        "label": "Fixed IP of the host",
+        "secured": false,
+        "required": true,
+        "immutable": false,
+        "group_name": "virtualmachine"
+      }
+  
+    ]
+  }
+  
