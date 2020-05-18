@@ -27,17 +27,6 @@
   ],
   "template_input_params": [
     {
-      "name": "ibm_stack_name",
-      "type": "string",
-      "description": "A unique stack name.",
-      "hidden": true,
-      "label": "A unique stack name.",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "environment"
-    },
-    {
       "name":  "openstack_image_id",
       "type": "string",
       "description": "The ID of the image to be used for deploy operations.",
@@ -82,23 +71,23 @@
       "group_name": "virtualmachine"
     },
     {
-      "name":  "image_id_username",
+      "name":  "openstack_keypair",
       "type": "string",
-      "description": "The username to SSH into image ID",
+      "description": "SSH Key pair name",
       "hidden": false,
-      "label": "Openstack Image Username",
+      "label": "SSH Key pair name",
       "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
     },
     {
-      "name":  "image_id_password",
-      "type": "password",
-      "description": "The password of the username to SSH into image ID",
+      "name":  "instance-ip",
+      "type": "string",
+      "description": "Fixed IP for the instance",
       "hidden": false,
-      "label": "Openstack Image Password",
-      "secured": true,
+      "label": "Fixed IP for the instance",
+      "secured": false,
       "required": true,
       "immutable": false,
       "group_name": "virtualmachine"
@@ -110,6 +99,24 @@
       "name": "single-vm-ip",
       "label": "IP Addresss of Virtual Machine",
       "description": "The Public and Public IP address",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "vm-private-key",
+      "label": "private key",
+      "description": "Private of for the instance",
+      "type": "string",
+      "hidden": false,
+      "secured": false,
+      "group_name": "content_template_output"
+    },
+    {
+      "name": "vm-public-key",
+      "label": "Public key",
+      "description": "Private key of the instance",
       "type": "string",
       "hidden": false,
       "secured": false,

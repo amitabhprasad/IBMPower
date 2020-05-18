@@ -16,6 +16,14 @@ variable "openstack_image_id" {
   description = "The ID of the image to be used for deploy operations."
 }
 
+variable "openstack_keypair" {
+  description = "Keypair name"
+}
+
+resource "openstack_compute_keypair_v2" "test-keypair" {
+  name       = "${var.openstack_keypair}"
+ }
+
 variable "openstack_flavor_id" {
   description = "The ID of the flavor to be used for deploy operations."
 }
@@ -24,14 +32,9 @@ variable "openstack_network_name" {
   description = "The name of the network to be used for deploy operations."
 }
 
-variable "image_id_username" {
-  description = "The username to SSH into image ID"
+variable "instance-ip"{
+  description = "Fixed IP for the instance"
 }
-
-variable "image_id_password" {
-  description = "The password of the username to SSH into image ID"
-}
-
 provider "openstack" {
   insecure = true
   #version  = "~> 0.3"
@@ -44,19 +47,20 @@ resource "openstack_compute_instance_v2" "single-vm" {
   name      = "${format("terraform-single-vm-%02d", count.index+1)}"
   image_id  = "${var.openstack_image_id}"
   flavor_id = "${var.openstack_flavor_id}"
+  key_pair  = "${openstack_compute_keypair_v2.test-keypair.name}"
 
   network {
     name = "${var.openstack_network_name}"
-  }
-
-  # Specify the ssh connection
-  connection {
-    user     = "${var.image_id_username}"
-    password = "${var.image_id_password}"
-    timeout  = "10m"
+    fixed_ip_v4 = "${var.instance-ip}"
   }
 }
 
 output "single-vm-ip" {
   value = "${openstack_compute_instance_v2.single-vm.*.network.0.fixed_ip_v4}"
+}
+output "vm-private-key" {
+  value = "${openstack_compute_keypair_v2.test-keypair.private_key}"
+}
+output "vm-public-key" {
+  value = "${openstack_compute_keypair_v2.test-keypair.public_key}"
 }
