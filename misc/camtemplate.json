@@ -1,0 +1,14 @@
+{
+    "name": "instance-remote-exec",
+    "description": "wait for remote exec demo",
+    "type": "userCreated",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Other"
+    },
+    "metadata": {
+      "displayName": "instance-remote-exec",
+      "bullets": []
+    }
+  }
