@@ -88,7 +88,7 @@
       "hidden": false,
       "label": "Fixed IP for the instance",
       "secured": false,
-      "required": true,
+      "required": false,
       "immutable": false,
       "group_name": "virtualmachine"
     }
