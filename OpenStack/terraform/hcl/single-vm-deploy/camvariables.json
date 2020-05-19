@@ -91,7 +91,19 @@
       "required": false,
       "immutable": false,
       "group_name": "virtualmachine"
+    },
+    {
+      "name":  "openstack_instance_name",
+      "type": "string",
+      "description": "Unique instance name to be used.",
+      "hidden": false,
+      "label": "Unique instance name to be used.",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "virtualmachine"
     }
+}
 
   ],
   "template_output_params": [
